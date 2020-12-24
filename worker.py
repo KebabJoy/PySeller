@@ -222,8 +222,6 @@ class Worker(threading.Thread):
     
     def __receive_next_update(self) -> telegram.Update:
         
-        If no update is found, block the process until one is received.
-        If a stop signal is sent, try to gracefully stop the thread.
         
         try:
             data = self.queue.get(timeout=self.cfg["Telegram"]["conversation_timeout"])
@@ -298,7 +296,6 @@ class Worker(threading.Thread):
     def __wait_for_precheckoutquery(self,
                                     cancellable: bool = False) -> Union[telegram.PreCheckoutQuery, CancelSignal]:
         
-        The payload is checked by the core before forwarding the message.
         log.debug("Waiting for a PreCheckoutQuery...")
         while True:
             
@@ -422,7 +419,6 @@ class Worker(threading.Thread):
 
     def __user_menu(self):
         
-        Normal bot actions should be placed here.
         log.debug("Displaying __user_menu")
         
         while True:
@@ -863,7 +859,6 @@ class Worker(threading.Thread):
 
     def __admin_menu(self):
         
-        Administrative bot actions should be placed here.
         log.debug("Displaying __admin_menu")
         
         while True:
